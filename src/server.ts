@@ -1,6 +1,6 @@
 import express from "express";
 import type { Request, Response } from "express";
-import { timeStamp } from "node:console";
+import userRoutes from "./routes/userRoutes.js";
 
 interface Etudiant {
   id: number;
@@ -40,3 +40,4 @@ app.get("/api/hello/:name", (req: Request<{name: string}>, res: Response) => {
   res.json(response);
   }
 )
+app.use("/api", userRoutes);

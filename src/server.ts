@@ -1,5 +1,6 @@
 import express from "express";
 import type { Request, Response } from "express";
+import { timeStamp } from "node:console";
 
 interface Etudiant {
   id: number;
@@ -27,3 +28,15 @@ app.get("/api/data", (req: Request, res: Response) => {
 app.listen(PORT, () => {
   console.log(`Serveur lancé sur http://localhost:${PORT}`);
 });
+
+app.get("/api/hello/:name", (req: Request<{name: string}>, res: Response) => {
+  const name: string = req.params.name;
+
+  const response = {
+    message: `Bonjour ${name}`,
+    timeStamp: new Date().toISOString(),
+  };
+
+  res.json(response);
+  }
+)

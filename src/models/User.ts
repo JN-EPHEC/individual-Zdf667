@@ -1,10 +1,7 @@
 import { Model, DataTypes } from "sequelize";
-import sequelize from "../config/database.js";
+import sequelize from "../config/database";
 
 class User extends Model {
-  declare id: number;
-  declare nom: string;
-  declare prenom: string;
 }
 
 User.init(
@@ -21,7 +18,6 @@ User.init(
   {
     sequelize,
     modelName: "User",
-    tableName: "users",
   }
 );
 

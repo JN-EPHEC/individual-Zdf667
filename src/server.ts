@@ -1,6 +1,7 @@
 import express from "express";
 import type { Request, Response } from "express";
 import userRoutes from "./routes/userRoutes.js";
+import sequelize from "./config/database.js";
 
 interface Etudiant {
   id: number;
@@ -24,6 +25,14 @@ app.get("/", (req: Request, res: Response) => {
 app.get("/api/data", (req: Request, res: Response) => {
   res.json(etudiants);
 });
+
+sequelize.authenticate()
+  .then(() => {
+    console.log("Connexion à la base de données réussie !");
+  })
+  .catch((error: unknown) => {
+    console.error("Impossible de se connecter à la base :", error);
+  });
 
 app.listen(PORT, () => {
   console.log(`Serveur lancé sur http://localhost:${PORT}`);

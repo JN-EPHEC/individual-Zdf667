@@ -23,7 +23,7 @@ async function startServer() {
     await sequelize.authenticate();
     console.log("Connexion à la base de données réussie !");
 
-    await sequelize.sync();
+    await sequelize.sync({alter: true});
     console.log("Base de données synchronisée.");
 
     // 3. Lancement du serveur Express

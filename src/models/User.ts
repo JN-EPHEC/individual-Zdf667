@@ -5,6 +5,7 @@ class User extends Model {
   declare id: number;
   declare nom: string;
   declare prenom: string;
+  declare age: number;
 }
 
 User.init(
@@ -17,10 +18,15 @@ User.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
+    age: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      defaultValue :18
+    }
   },
   {
     sequelize,
-    modelName: "User",
+    modelName: "User", tableName: "users"
   }
 );
 

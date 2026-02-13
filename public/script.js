@@ -13,8 +13,15 @@ async function loadUsers() {
             const li = document.createElement('li');
             li.className = 'list-group-item d-flex justify-content-between align-items-center';
             li.innerHTML = `
-                ${user.prenom} ${user.nom}
-                <span class="badge bg-secondary rounded-pill">ID: ${user.id}</span>
+            <div>
+                    <strong>${user.prenom}</strong> ${user.nom}
+                </div>
+                <div>
+                    <span class="badge bg-light text-dark me-2">ID: ${user.id}</span>
+                    <button class="btn btn-outline-danger btn-sm" onclick="deleteUser(${user.id})">
+                        &times;
+                    </button>
+                </div>
             `;
             listDisplay.appendChild(li);
         });
@@ -23,6 +30,24 @@ async function loadUsers() {
     }
 }
 
+//Ajout de la focntion pour supprimer
+window.deleteUser = async function supprmierUser(id){
+    if (confirm("Veux-tu vraiment supprimé ?")) {
+        try{
+            const response = await fetch(`/api/users/${id}`, {
+                method: 'DELETE'
+            });
+            
+            if (response.ok) {
+                loadUsers();
+            } else {
+                alert("Erreur de suppression");
+            }
+        } catch (error) {
+            console.error("Erreur delete:", error)
+        }
+    }
+}
 // Gestion du formulaire (Ajout)
 userForm.addEventListener('submit', async (event) => {
     event.preventDefault(); 

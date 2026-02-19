@@ -2,6 +2,7 @@ import express from "express";
 import sequelize from "./config/database.js";
 import userRoutes from "./routes/userRoutes.js";
 import { requestLogger } from './middlewares/logger';
+import { errorHandler } from "./middlewares/errorHandler.js";
 
 
 const app = express();
@@ -9,14 +10,13 @@ const PORT = 3000;
 
 // --- Middlewares ---
 app.use(express.json());
-
-app.use("/api/users", userRoutes);
-app.use(express.static("public"))
 app.use(requestLogger);
 
-// --- Routes ---
-
+app.use("/api/users", userRoutes);
+app.use(express.static("public"));
 app.get("/", (request, response) => response.send("Bienvenue sur l'api Sequelize"));
+app.use(errorHandler);
+
 // --- Démarrage de la Base de Données et du Serveur ---
 
 async function startServer() {

@@ -2,6 +2,7 @@ import { Router } from "express";
 import type { Request, Response } from "express";
 import User from '../models/User.js'
 import { userService } from "../services/userService.js";
+import * as userController from "../controllers/userController";
 
 
 
@@ -16,16 +17,7 @@ router.get("/stats", async (req: Request, res: Response) => {
       res.status(500).json({message: "Erreur stats" });
     }
 });
-
-router.get("/", async (req: Request, res: Response) => {
-    try {
-      const users = await userService.getAll();
-      res.json(users);
-    } catch (error) {
-        console.error("Erreur GET /:", error);
-      res.status(500).json({ message: "Erreur lors de la récupération" });
-    }
-});
+router.get("/", userController.getAllUsers);
 
 router.post("/", async (req: Request, res: Response) => {
   try {

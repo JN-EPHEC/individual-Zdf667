@@ -1,9 +1,10 @@
 import express from "express";
-import sequelize from "./config/database.js";
-import userRoutes from "./routes/userRoutes.js";
+import sequelize from "./config/database";
+import userRoutes from "./routes/userRoutes";
 import { requestLogger } from './middlewares/logger';
-import { errorHandler } from "./middlewares/errorHandler.js";
-
+import { errorHandler } from "./middlewares/errorHandler";
+import swaggerUi from "swagger-ui-express";
+import { swaggerSpec } from "./config/swagger";
 
 const app = express();
 const PORT = 3000;
@@ -12,9 +13,15 @@ const PORT = 3000;
 app.use(express.json());
 app.use(requestLogger);
 
+// --- Swagger ---
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
+
+// --- Routes ---
 app.use("/api/users", userRoutes);
 app.use(express.static("public"));
 app.get("/", (request, response) => response.send("Bienvenue sur l'api Sequelize"));
+
+// --- Erreur en dernier ---
 app.use(errorHandler);
 
 // --- Démarrage de la Base de Données et du Serveur ---

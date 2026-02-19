@@ -1,7 +1,7 @@
 import { Router } from "express";
 import type { Request, Response } from "express";
-import User from '../models/User.js'
-import { userService } from "../services/userService.js";
+import User from '../models/User'
+import { userService } from "../services/userService";
 import * as userController from "../controllers/userController";
 
 
@@ -17,6 +17,17 @@ router.get("/stats", async (req: Request, res: Response) => {
       res.status(500).json({message: "Erreur stats" });
     }
 });
+
+/**
+* @swagger
+* /api/users:
+*  get:
+*    summary: Récupère la liste des utilisateurs
+*    tags: [Users]
+*    responses:
+*      200:
+*        description: Succès
+*/
 router.get("/", userController.getAllUsers);
 
 router.post("/", async (req: Request, res: Response) => {

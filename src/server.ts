@@ -1,6 +1,7 @@
 import express from "express";
 import sequelize from "./config/database";
 import userRoutes from "./routes/userRoutes";
+import cors from 'cors';
 import { requestLogger } from './middlewares/logger';
 import { errorHandler } from "./middlewares/errorHandler";
 import swaggerUi from "swagger-ui-express";
@@ -12,6 +13,11 @@ const PORT = 3000;
 // --- Middlewares ---
 app.use(express.json());
 app.use(requestLogger);
+app.use(cors({
+    origin: 'http://localhost:5173', // L'URL par défaut de Vite
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    allowedHeaders: ['Content-Type', 'Authorization']
+}));
 
 // --- Swagger ---
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));

@@ -1,0 +1,21 @@
+# Dépendances (les plus lourds)
+node_modules/
+client/node_modules/
+server/node_modules/
+
+# Base de données SQLite (très important pour ne pas partager tes données locales)
+server/database.sqlite
+server/*.db
+
+# Fichiers de build (générés automatiquement)
+client/dist/
+server/dist/
+
+# Configuration locale et secrets
+.env
+.env.local
+.vscode/
+
+# Divers
+.DS_Store
+Thumbs.db

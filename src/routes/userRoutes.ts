@@ -3,11 +3,22 @@ import type { Request, Response } from "express";
 import User from '../models/User'
 import { userService } from "../services/userService";
 import * as userController from "../controllers/userController";
+import { checkIdParam } from '../middlewares/validation';
 
 
 
 const router = Router();
 
+/**
+ * @swagger
+ * /api/users/stats:
+ *   get:
+ *     summary: Récupère la moyenne d'âge des utilisateurs
+ *     tags: [Users]
+ *     responses:
+ *       200:
+ *         description: Succès
+ */
 router.get("/stats", async (req: Request, res: Response) => {
     try{
       const average = await userService.getAverageAge();
@@ -19,16 +30,99 @@ router.get("/stats", async (req: Request, res: Response) => {
 });
 
 /**
-* @swagger
-* /api/users:
-*  get:
-*    summary: Récupère la liste des utilisateurs
-*    tags: [Users]
-*    responses:
-*      200:
-*        description: Succès
-*/
+ * @swagger
+ * /api/users:
+ *   get:
+ *    summary: Récupère la liste de tous les utilisateurs
+ *    responses:
+ *       200:
+ *         description: Liste récupérée avec succès
+ */
 router.get("/", userController.getAllUsers);
+
+
+/**
+ * @swagger
+ * /api/users/{id}:
+ *   get:
+ *     summary: Récupère un utilisateur par son ID
+ *     tags:
+ *       - Users
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: integer
+ *     responses:
+ *       200:
+ *         description: Utilisateur trouvé
+ *       404:
+ *         description: Non trouvé
+ */
+router.get('/:id', checkIdParam, userController.getUserById);
+
+/**
+ * @swagger
+ * /api/users:
+ *   post:
+ *     summary: Crée un nouvel utilisateur
+ *     tags: [Users]
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *              nom:
+ *                type: string
+ *              prenom:
+ *                type: string
+ *              age:
+ *               type: integer
+ *     responses:
+ *      201:
+ *        description: Créé
+ */
+router.post('/', userController.createUser);
+
+/**
+ * @swagger
+ * /api/users/{id}:
+ *   put:
+ *     summary: Met à jour un utilisateur existant
+ *     tags: [Users]
+ *     parameters:
+ *      - in: path
+ *        name: id
+ *        required: true
+ *        schema:
+ *          type: integer
+ *     responses:
+ *      200:
+ *        description: Mis à jour
+ */
+router.put('/:id', checkIdParam, userController.updateUser);
+
+/**
+ * @swagger
+ * /api/users/{id}:
+ *   delete:
+ *     summary: Supprime un utilisateur par son ID
+ *     tags:
+ *       - Users
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: integer
+ *     responses:
+ *       200:
+ *         description: Supprimé
+ */
+router.delete('/:id', checkIdParam, userController.deleteUser);
 
 router.post("/", async (req: Request, res: Response) => {
   try {

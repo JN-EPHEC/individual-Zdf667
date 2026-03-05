@@ -1,42 +1,65 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
+/* App.css */
+
+/* On réinitialise le body pour qu'il n'interfère pas */
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  min-height: 100vh;
+  display: block; /* On repasse en affichage standard */
+}
+
+.container {
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto; /* Centre le bloc dans la page */
+  padding: 40px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centre le titre et le tableau horizontalement */
+  justify-content: center;
+}
+
+h1 {
+  color: #ffffff;
   text-align: center;
+  margin-bottom: 30px;
+  width: 100%;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+.table-wrapper {
+  width: 100%;
+  max-width: 800px; /* Tu peux ajuster la largeur max du tableau ici */
+  overflow-x: auto;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.5);
+  border-radius: 12px;
+  background-color: white;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+table {
+  width: 100%;
+  border-collapse: collapse;
+  color: #333;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+th, td {
+  padding: 15px 20px;
+  text-align: center;
+  border-bottom: 1px solid #eee;
 }
 
-.card {
-  padding: 2em;
+th {
+  background-color: #4A90E2;
+  color: white;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
 
-.read-the-docs {
-  color: #888;
+tr:last-child td {
+  border-bottom: none;
+}
+
+tr:hover {
+  background-color: #fcfcfc;
 }

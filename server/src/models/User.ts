@@ -21,7 +21,11 @@ User.init(
     age: {
       type: DataTypes.INTEGER,
       allowNull: false,
-      defaultValue :18
+      defaultValue :18,
+      validate: {
+        min: 0,
+        max: 120
+      }
     }
   },
   {

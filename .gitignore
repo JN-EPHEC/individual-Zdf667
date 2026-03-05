@@ -2,6 +2,7 @@
 node_modules/
 client/node_modules/
 server/node_modules/
+**/node_modules/
 
 # Base de données SQLite (très important pour ne pas partager tes données locales)
 server/database.sqlite

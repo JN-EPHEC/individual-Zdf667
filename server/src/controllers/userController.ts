@@ -29,8 +29,8 @@ export const getUserById = async (req: Request, res: Response) => {
 // POST /api/users
 export const createUser = async (req: Request, res: Response) => {
     try {
-        const { name, email } = req.body; // Adapte selon tes colonnes en DB
-        const newUser = await User.create({ name, email });
+        const { nom, prenom, age } = req.body; // Adapte selon tes colonnes en DB
+        const newUser = await User.create({ nom, prenom, age });
         res.status(201).json(newUser);
     } catch (error) {
         res.status(400).json({ message: "Erreur lors de la création de l'utilisateur", error });
@@ -41,14 +41,14 @@ export const createUser = async (req: Request, res: Response) => {
 export const updateUser = async (req: Request, res: Response) => {
     try {
         const id = req.params.id as string;
-        const { name, email } = req.body;
+        const { nom, prenom, age } = req.body;
         
         const user = await User.findByPk(id);
         if (!user) {
             return res.status(404).json({ message: "Utilisateur non trouvé" });
         }
 
-        await user.update({ name, email });
+        await user.update({ nom, prenom, age });
         res.status(200).json(user);
     } catch (error) {
         res.status(400).json({ message: "Erreur lors de la mise à jour", error });

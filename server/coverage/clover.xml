@@ -1,25 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1772889275187" clover="3.2.0">
-  <project timestamp="1772889275187" name="All files">
-    <metrics statements="32" coveredstatements="18" conditionals="39" coveredconditionals="15" methods="2" coveredmethods="2" elements="73" coveredelements="35" complexity="0" loc="32" ncloc="32" packages="1" files="2" classes="2"/>
+<coverage generated="1772892214215" clover="3.2.0">
+  <project timestamp="1772892214215" name="All files">
+    <metrics statements="39" coveredstatements="39" conditionals="53" coveredconditionals="53" methods="3" coveredmethods="3" elements="95" coveredelements="95" complexity="0" loc="39" ncloc="39" packages="1" files="3" classes="3"/>
     <file name="password.ts" path="C:\Users\Kanju\OneDrive - EPHEC asbl\bloc 2\Dev3\dev3-backend-tp1\server\src\utils\password.ts">
-      <metrics statements="16" coveredstatements="2" conditionals="25" coveredconditionals="1" methods="1" coveredmethods="1"/>
+      <metrics statements="16" coveredstatements="16" conditionals="25" coveredconditionals="25" methods="1" coveredmethods="1"/>
       <line num="1" count="1" type="stmt"/>
-      <line num="2" count="1" type="cond" truecount="1" falsecount="1"/>
-      <line num="3" count="0" type="cond" truecount="0" falsecount="2"/>
-      <line num="4" count="0" type="cond" truecount="0" falsecount="2"/>
-      <line num="6" count="0" type="stmt"/>
-      <line num="7" count="0" type="stmt"/>
-      <line num="8" count="0" type="stmt"/>
-      <line num="9" count="0" type="stmt"/>
-      <line num="11" count="0" type="cond" truecount="0" falsecount="2"/>
-      <line num="13" count="0" type="cond" truecount="0" falsecount="2"/>
-      <line num="14" count="0" type="stmt"/>
-      <line num="15" count="0" type="cond" truecount="0" falsecount="4"/>
-      <line num="17" count="0" type="cond" truecount="0" falsecount="5"/>
-      <line num="18" count="0" type="cond" truecount="0" falsecount="2"/>
-      <line num="21" count="0" type="cond" truecount="0" falsecount="4"/>
-      <line num="24" count="0" type="stmt"/>
+      <line num="2" count="11" type="cond" truecount="2" falsecount="0"/>
+      <line num="3" count="10" type="cond" truecount="2" falsecount="0"/>
+      <line num="4" count="9" type="cond" truecount="2" falsecount="0"/>
+      <line num="6" count="8" type="stmt"/>
+      <line num="7" count="8" type="stmt"/>
+      <line num="8" count="8" type="stmt"/>
+      <line num="9" count="8" type="stmt"/>
+      <line num="11" count="8" type="cond" truecount="2" falsecount="0"/>
+      <line num="13" count="2" type="cond" truecount="2" falsecount="0"/>
+      <line num="14" count="1" type="stmt"/>
+      <line num="15" count="6" type="cond" truecount="4" falsecount="0"/>
+      <line num="17" count="4" type="cond" truecount="5" falsecount="0"/>
+      <line num="18" count="2" type="cond" truecount="2" falsecount="0"/>
+      <line num="21" count="2" type="cond" truecount="4" falsecount="0"/>
+      <line num="24" count="2" type="stmt"/>
     </file>
     <file name="shipping.ts" path="C:\Users\Kanju\OneDrive - EPHEC asbl\bloc 2\Dev3\dev3-backend-tp1\server\src\utils\shipping.ts">
       <metrics statements="16" coveredstatements="16" conditionals="14" coveredconditionals="14" methods="1" coveredmethods="1"/>
@@ -39,6 +39,16 @@
       <line num="75" count="15" type="cond" truecount="2" falsecount="0"/>
       <line num="76" count="5" type="stmt"/>
       <line num="79" count="15" type="stmt"/>
+    </file>
+    <file name="userValidator.ts" path="C:\Users\Kanju\OneDrive - EPHEC asbl\bloc 2\Dev3\dev3-backend-tp1\server\src\utils\userValidator.ts">
+      <metrics statements="7" coveredstatements="7" conditionals="14" coveredconditionals="14" methods="1" coveredmethods="1"/>
+      <line num="3" count="1" type="stmt"/>
+      <line num="5" count="7" type="cond" truecount="4" falsecount="0"/>
+      <line num="8" count="6" type="stmt"/>
+      <line num="9" count="6" type="cond" truecount="2" falsecount="0"/>
+      <line num="12" count="5" type="cond" truecount="4" falsecount="0"/>
+      <line num="15" count="3" type="cond" truecount="4" falsecount="0"/>
+      <line num="17" count="2" type="stmt"/>
     </file>
   </project>
 </coverage>

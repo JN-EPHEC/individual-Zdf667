@@ -5,7 +5,7 @@ const avgAgeAffiche = document.getElementById('avgAge')
 //Charger les utilisateurs
 async function loadUsers() {
     try {
-        const response = await fetch('/api/users');
+        const response = await fetch(`${import.meta.env.VITE_API_URL}/users`);
 
         if (!response.ok) {
             console.error("Le serveur a renvoyé une erreur");
@@ -14,7 +14,7 @@ async function loadUsers() {
         const users = await response.json();
 
         // Chargement des stats
-        const resStats = await fetch('/api/users/stats');
+        const resStats = await fetch(`${import.meta.env.VITE_API_URL}/users/stats`);
         const stats = await resStats.json()
         avgAgeAffiche.textContent = stats.averageAge;
 
